@@ -1,0 +1,561 @@
+\documentclass[italian,a4paper,12pt,oneside]{book}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{forest}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{1}
+\usepackage{float}
+\usepackage{babel}
+\usepackage{microtype} % migliora espansione dei font. Suggerito su ``L'arte di scrivere in LaTeX, pag. 45''
+\usepackage{indentfirst} % indentazione anche su primo paragrafo.  Suggerito su ``L'arte di scrivere in LaTeX, pag. 45''
+\usepackage{booktabs} % serve per le tabelle.   Suggerito su ``L'arte di scrivere in LaTeX, pag. 85''
+\usepackage{caption} % serve per le tabelle.   Suggerito su ``L'arte di scrivere in LaTeX, pag. 85''
+
+\definecolor{fblue}{RGB}{92,144,192}
+\definecolor{fgreen}{RGB}{34,162,70}
+
+\newcommand\myfolder[2][fblue]{%
+\begin{tikzpicture}[overlay]
+  \draw[fill=#1!82!black] 
+    (-20pt,14pt) -- 
+    (-17pt,17pt) --
+    (-1pt,17pt) --
+    (1pt,19pt) --
+    (12pt,19pt) --
+    (14pt,17pt) --
+    (17pt,17pt) --
+    (20pt,14pt) -- cycle;
+  \draw[line width=0.75pt,white] 
+    (-18.5pt,14pt) -- 
+    (-15.5pt,16.5pt) --
+    (0.5pt,16.5pt) --
+    (2pt,18.3pt) --
+    (10.5pt,18.3pt) --
+    (12.5pt,16.5pt) --
+    (15.5pt,16.5pt) --
+    (18.5pt,14pt) -- cycle;
+  \draw[rounded corners,top color=#1,bottom color=#1!30] 
+    (-23pt,14pt) -- 
+    (23pt,14pt) --
+    (21pt,-14pt) --
+    (-21pt,-14pt) -- cycle;
+  \draw[rounded corners,line width=1pt,white] 
+    (-22pt,13pt) -- 
+    (22pt,13pt) --
+    (20pt,-13pt) --
+    (-20pt,-13pt) -- cycle;
+\end{tikzpicture}%
+\makebox[0pt]{\raisebox{-3pt}{{\ttfamily\small #2}}}
+}
+
+
+
+
+\geometry{textheight=24.2cm,textwidth=16cm}
+\pagestyle{headings}
+\frenchspacing
+
+\date{}
+
+\title{
+\huge \textbf{**BOZZA**} Guida semplificata a
+\newline
+\newline \includegraphics[width=1\textwidth]{Immagini/kde-tagline.png}} 
+\author{Germano Massullo}
+
+\makeindex
+
+\begin{document}
+\frontmatter		% inizia la numerazione con numeri romani
+
+\maketitle
+\tableofcontents
+
+\chapter*{Prefazione}
+Questa è una breve guida a Fedora, scritta per venire incontro alle esigenze
+di coloro che per la prima volta utilizzano questo sistema operativo.
+L'intento è quello di far familiarizzare le persone con le componenti fondamentali
+del sistema. Dato che non tutti dispongono di tempo per andare a leggere
+in maniera approfondita un manuale, la guida è stata divisa in due parti:
+una con nozioni sintetiche, una con nozioni estese.
+
+Il principio cardine che ha guidato la scrittura di entrambe le parti, è il mantenimento
+di un linguaggio semplice e conciso, così da render piacevole e scorrevole la lettura.
+
+\mainmatter		% inizia la numerazione con numeri cardinali
+\part{Nozioni sintetiche}
+\chapter{Introduzione}
+
+Fedora è un sistema operativo basato su kernel Linux, potente, veloce e stabile, per un utilizzo quotidiano.
+Creato da una comunità di persone residenti in tutto il mondo. È possibile utilizzarlo,
+studiarlo e condividerlo liberamente.
+
+Chiunque può partecipare al miglioramento di Fedora, a prescindere dal grado di conoscenze informatiche:
+si può contribuire ad esempio aderendo a gruppi di traduttori di lingue,
+di grafici, di comunicazione, marketing, eccetera.
+
+La comunità è strutturata con vari organi i quali componenti vengono eletti ogni due anni.
+Ogni persona che contribuisce al progetto Fedora può votare liberamente.
+Il dialogo nella comunità è aperto e ognuno può sottoporre il proprio punto di vista. 
+Per fare un esempio, qualora una persona riscontri un difetto, potrà aprire una segnalazione
+e parlare direttamente con chi ha realizzato la porzione di programma in oggetto.
+
+\section{Le quattro fondamenta}
+
+\textit{Il testo del presente paragrafo è preso dalla pagina web 
+\newline \texttt{https://fedoraproject.org/wiki/Foundations/it}}
+
+\begin{center}
+\includegraphics[width=0.3\textwidth]{Immagini/4Foundations.png}  
+\end{center}
+
+Le quattro fondamenta sono i valori basilari della comunità Fedora. Esse scaturiscono dal lavoro 
+del progetto marketing di Fedora, ed hanno sostituito il vecchio slogan "infinity, freedom, voice", 
+nato dalla progettazione del logo Fedora, rappresentando una parte importantissima ed efficace del 
+marchio Fedora e della sua immagine, ma non sufficiente a descrivere i nostri valori fondamentali 
+in modo chiaro ed efficace. 
+
+\subsection*{Freedom (Libertà)}
+\begin{center}
+\includegraphics[width=0.1\textwidth]{Immagini/4Foundations-freedom100px.png}  
+\end{center}
+
+In informatica vuol dire impegno ad usare, sviluppare e diffondere software e contenuti liberi
+
+Le persone appartenenti al Fedora Project si impegnano a sostenere questa libertà, come obiettivo primario della 
+missione. Affiancando soluzioni alternative libere a codice e contenuti proprietari, è possibile 
+migliorare lo stato complessivo sia del software che dei contenuti, liberi ed open source, limitando 
+gli effetti di contaminazione del codice proprietario o vincolato da brevetti sul Progetto. 
+Per questo motivo, e in virtù soprattutto della sopravvivenza dello sviluppo del software in 
+generale, che come fonte di conoscenza deve essere/rimanere libera e universale, si evitano 
+scorciatoie quali includere in Fedora software proprietario o gravato da brevetti, 
+o il loro uso per creare software. In virtù della nostra scelta, il Fedora Project è in grado di: 
+\begin{itemize}
+ \item  fornire rilasci regolari e al 100\% legalmente distribuibili per tutti;
+ \item sostenere l'innovazione nel software libero ed open source per fornire soluzioni 
+ pari o superiori al codice chiuso o proprietario;
+ \item creare soluzioni completamente libere che chiunque possa emulare
+ o copiare, interamente o in parte, per i propri scopi. 
+\end{itemize}
+
+\subsection*{Friends (Amici)}
+\begin{center}
+\includegraphics[width=0.1\textwidth]{Immagini/4Foundations-friends100px.png}
+\end{center}
+Il punto di forza della nostra comunità.
+
+La comunità Fedora è composta da tante persone diverse, che lavorano insieme per migliorare 
+il software libero. Come tra amici, occasionalmente si può essere in disaccordo su 
+certi dettagli, ma nella sostanza cerchiamo sempre di trovare un consenso condiviso 
+per servire gli interessi del software libero. Crediamo in una salda collaborazione 
+tra Red Hat e la nostra vasta comunità di volontari, dal momento che entrambe 
+forniscono contributi essenziali al successo del Fedora Project. 
+
+Se credi nei nostri valori, puoi entrare a far parte di Fedora, indipendentemente dal tuo livello 
+di conoscenza tecnica. (Non hai bisogno di un Master o di un dottorato di 
+Ricerca alla NASA per farne parte! :-)) . 
+
+\subsection*{Features (Funzionalità)}
+\begin{center}
+\includegraphics[width=0.1\textwidth]{Immagini/4Foundations-features100px.png}
+\end{center}
+La nostra attenzione per l'eccellenza. 
+
+La comunità Fedora ha realizzato e continua a realizzare tante soluzioni 
+tecniche che nel corso del tempo hanno reso Linux potente, flessibile ed 
+usabile per milioni di utenti, amministratori e sviluppatori in 
+tutto il mondo. Per noi è importante:
+\begin{itemize}
+ \item migliorare le soluzioni per gli utenti finali 
+ \item creare ambienti più flessibili e potenti su cui costruire nuove soluzioni basate su software libero.
+\end{itemize}
+Entrambi i cambiamenti vengono sviluppati direttamente in collaborazione con le comunità software 
+a monte il cui lavoro è parte della distribuzione Fedora. Tale collaborazione si intensifica quando 
+esistono opportunità di miglioramento, cosicché tutti gli utilizzatori di software libero ne possano 
+beneficiare, indipendentemente dalla distribuzione scelta.
+
+Il nostro sviluppo delle caratteristiche progettuali è sempre fatto apertamente 
+e con trasparenza, e chiunque può partecipare. 
+
+\subsection*{First (Primi)}
+\begin{center}
+\includegraphics[width=0.1\textwidth]{Immagini/4Foundations-first100px.png}
+\end{center}
+\textbf{First} Il nostro impegno per l'innovazione.
+Fedora è il risultato del lavoro di tanti appassionati, il cui costante 
+impegno è indirizzato ad offrire il software libero più recente e stabile, oltreché 
+robusto, utile e potente. Esaminando il programma 
+Fedora, si può notare che la direzione di sviluppo del S.O. prende 
+in considerazione sia le esigenze dell'utente casalingo, che quelle 
+dell'utente business. Il nostro rapido ciclo di rilascio è un 
+fattore di successo nella nostra capacità di innovare.
+Sappiamo anche che esiste già una certa stabilità a lungo termine 
+nell'ecosistema Linux, e una varietà di distribuzioni Linux orientate 
+alla comunità o alle aziende. Tuttavia, l'obiettivo di migliorare il 
+software libero ha indotto il Fedora Project a seguire una strategia 
+che preservi la spinta innovativa del nostro progresso tecnico, 
+collaterale, e di creazione di comunità. 
+
+Fedora aspira sempre a fornire il futuro, \textbf{First}. 
+\cleardoublepage
+
+
+
+\chapter{Funzionamento del sistema}
+
+
+\section{Struttura cartelle}
+In Fedora le cartelle formano una struttura gerarchica alla cui cima vi è una
+cartella chiamata \texttt{cartella radice} o \texttt{root} (in inglese). Essa è
+identificata dal simbolo \texttt{/}
+\newline La cartella principale che l'utente utilizza è quella con il suo nome,
+presente all'interno della directory \texttt{home}. Al suo interno vi sono salvati
+file come documenti, foto e musica.
+
+Quando si cita una cartella (ad esempio \texttt{anna}) utilizzando il suo
+``indirizzo'' completo: si scriverà \newline \texttt{/home/anna}
+\newline Le altre cartelle mostrate nella seguente figura, sono riservate al sistema
+e per il momento non sono di nostro interesse
+
+%\begin{figure}[h]
+%    \centering
+%    \includegraphics[width=0.8\textwidth]{Immagini/Albero_cartelle.jpg}
+%    \caption{Albero cartelle}
+%    \label{fig:Albero cartelle}
+%\end{figure}
+
+\begin{figure}[h]
+  \centering
+  
+  \begin{forest}
+  for tree={
+    parent anchor=south,
+    child anchor=north,
+    node options={inner sep=11pt},
+    l sep=25pt,
+    s sep=40pt,
+  } 
+  [\myfolder{/}
+    [\myfolder{bin}]
+    [\myfolder{dev}]
+    [{\myfolder[fgreen]{home}}
+      [{\myfolder[fgreen]{anna}}
+	[{\myfolder[fgreen]{documenti}}]
+	[{\myfolder[fgreen]{immagini}}]
+	]
+      [{\myfolder[fgreen]{claudio}}
+      	[{\myfolder[fgreen]{documenti}}]
+	[{\myfolder[fgreen]{immagini}}]
+      ]
+    ]
+    [\myfolder{media}]
+    [\myfolder{mnt}]
+    [\myfolder{usr}]
+  ]
+  \end{forest}
+  \caption{Albero cartelle in Linux}
+  \label{fig:Albero cartelle in Linux}
+\end{figure}
+
+La prima domanda che sorge potrebbe essere: ``dove vanno a finire i dischi esterni, le periferiche USB, i DVD?''
+La risposta è: dopo il loro collegamento, vanno a finire (in gergo: ``vengono montati'') dentro la cartella \texttt{media}.
+
+\cleardoublepage
+
+\section{Interfaccia grafica KDE Plasma}
+\begin{center}
+\includegraphics[width=0.1\textwidth]{Immagini/kde-logo.png}
+\end{center}
+Normalmente si è abituati al concetto che ogni sistema operativo abbia una propria interfaccia
+grafica che lo caratterizza. Fedora al contrario, può avere più interfacce grafiche, ognuna di esse 
+con marcate differenze rispetto alle altre.
+L'interfaccia trattata su questa guida si chiama \texttt{KDE Plasma}. Essa è un ambiente
+grafico che coniuga una grande semplicità di utilizzo, con una elevata possibilità di personalizzazione .
+
+Per una lettura più approfondita si \underline{consiglia fortemente} la consultazione
+della sezione aiuto presente nel computer. Essa tratta con semplici didascalie,
+ogni dettaglio di tutte le componenti del sistema.
+Per accedervi, andare in \texttt{Menù applicazioni->Aiuto}, oppure premendo il tasto
+\texttt{F1}. In quest'ultimo caso, si aprirà la guida direttamente alla sezione 
+riguardante il programma in uso.
+
+Di seguito vengono analizzati gli elementi principali di KDE Plasma, con il quale
+un utente si trova in contatto quotidianamente.
+
+
+\subsection{Pannello di KDE Plasma}
+\begin{center}
+\includegraphics[width=1\textwidth]{Immagini/pannello.png}
+\end{center}
+La barra posta nella parte inferiore dello schermo si chiama \texttt{pannello}.
+Esso è costituito da varie componenti:
+\begin{enumerate}
+ \item menù di avvio delle applicazioni;
+ \item gestore dei processi;
+ \item vassoio di sistema.
+\end{enumerate}
+Cliccando con il pulsante destro del mouse su ognuno di essi, è possibile accedere alle
+relative opzioni, che contengono innumerevoli personalizzazioni. Tale consiglio è valido
+per le altre parti del sistema operativo: cliccare con il pulsante destro del mouse
+rivela sempre utili opzioni non visibili altrimenti.
+
+\paragraph{Menù di avvio delle applicazioni}
+\hfill\newline Il menù di avvio delle applicazioni è diviso per categorie (grafica, internet,
+ufficio, ecc.). È presente una sezione 
+preferiti dove si possono inserire le applicazioni più utilizzate.
+Infine è presente la voce \texttt{aiuto} che contiene la guida di KDE Plasma,
+la cui lettura è consigliata.
+
+\paragraph{Gestore dei processi}
+\hfill\newline
+Il gestore dei processi mostra le applicazioni in esecuzione.
+
+\paragraph{Vassoio di sistema}
+\hfill\newline Il vassoio di sistema mostra le icone dei servizi che gestiscono le periferiche USB, 
+
+\begin{center}
+ \begin{tabular}{ll}
+ \toprule
+ Simbolo & Descrizione \\
+ \midrule
+  \includegraphics[width=0.06\textwidth]{Immagini/klipper.eps} & Mostra le cose che si sono copiate,
+  come quando si opera in un testo.\\
+ \midrule
+   \includegraphics[width=0.06\textwidth]{Immagini/device.eps} & Mostra le periferiche USB collegate
+   e ne permette la rimozione sicura\\
+ \bottomrule
+\end{tabular}
+
+\end{center}
+
+
+\cleardoublepage
+
+\section{Installazione dei programmi}
+Chiunque abbia bisogno di un programma per una particolare
+esigenza, di solito ha già in mente il nome del software da installare sul proprio
+computer. Per quanto riguarda programmi compatibili con Linux, è consigliabile effettuare
+una ricerca su internet, in quanto i loro nomi potrebbero essere differenti.
+
+Normalmente si è abituati ad installare i programmi facendo doppio click 
+sul file di installazione che si è scaricato da internet. Su Fedora il cosiddetto 
+``file di installazione`` è un file pacchetto RPM.
+In Fedora un pacchetto RPM può essere installato in due modi diversi:
+\begin{itemize}
+ \item In maniera automatica dal gestore dei programmi (Apper);
+ \item Scaricando manualmente da internet un file pacchetto RPM;
+\end{itemize}
+\paragraph{Gestore dei programmi \texttt{Apper}}
+\begin{center}
+\includegraphics[width=1\textwidth]{Immagini/Apper.png}
+\end{center}
+È il gestore dei pacchetti permette l'installazione e la rimozione dei programmi.
+Essi sono divisi per categorie, ed è possibile operare una ricerca qualora si conosca già il
+nome del software desiderato.
+Una volta trovato, Apper effettua lo scaricamento e l'installazione in maniera del tutto autonoma.
+Il gestore dei programmi, per svolgere le sue funzioni, attinge ai server di Fedora,
+chiamati anche \texttt{repository}. In essi è presente solamente Software Libero.
+Tra i due modi di installare pacchetti RPM, questa è la scelta consigliata.
+
+\paragraph{File pacchetto RPM}
+Qualora il programma desiderato non sia presente nei \texttt{repository},
+si può cercare un file RPM su internet. Dopo averlo scaricato, basterà un doppio click
+per iniziare l'installazione.
+
+\section{Gestore dei file}
+
+\begin{center}
+\includegraphics[width=1\textwidth]{Immagini/Dolphin.png}
+\end{center}
+
+Il gestore dei file di KDE Plasma si chiama Dolphin. Esso è altamente personalizzabile,
+e permette l'apertura di più tab per poter tenere aperte più cartelle contemporaneamente.
+Sul lato sinistro vi è il pannello delle risorse, mentre a destra vi è l'anteprima dei file.
+\subsection{Pannello risorse}
+Il pannello risorse, contiene:
+\begin{itemize}
+ \item le partizioni dei dischi%
+ ;
+ \footnote{Definizione di partizione al paragrafo \ref{Dischi rigidi}}
+ \item dispositivi rimovibili (come le ''penne USB``);
+ \item collegamenti a cartelle
+\end{itemize}
+Qualora si voglia aggiungere il collegamento a una cartella che si utilizza
+spesso, si deve cliccare con il tasto destro del mouse sulla cartella
+e selezionare la voce \texttt{Aggiungi a Risorse}.
+\chapter{Risoluzione problemi}
+
+
+\section{Problemi ambiente grafico}
+
+
+\subsection{Barra applicazioni (pannello KDE) danneggiata / malfunzionante}
+
+La cosa migliore da fare è cliccare con il destro eliminando i vari
+componenti finché non si riesce ad eliminare il pannello. Dopodiché
+cliccando nuovamente con il destro sul desktop, selezionare
+\texttt{
+aggiungi~nuovo~pannello~->~pannello~predefinito
+}
+e si avrà di nuovo una barra applicazioni perfettamente funzionante.
+Il consiglio è di bloccare il pannello per evitare danni accidentali.
+
+
+\section{Altri problemi}
+
+\subsection{Ho una stampante HP, come posso fare per utilizzarla?}
+Le stampanti di tutte le marche vengono riconosciute automaticamente quando si
+collega il cavo USB. Tuttavia la HP ha messo a disposizione un software
+che permette una migliore gestione della stampante. Per installarlo aprire \texttt{Apper}
+ed installare il programma \texttt{hplip-gui}. Dopodiché andare nel menù e
+aggiungere manualmente la stampante.
+
+\subsection{Posso utilizzare il mio scanner?}
+Si, basta installare il pacchetto \texttt{skanlite} .
+Qualora lo scanner non fosse riconosciuto, controllare se è presente nella lista
+\texttt{http://www.sane-project.org/sane-mfgs.html} . In caso affermativo,
+chiedere assistenza sul forum \texttt{http://www.fedoraonline.it}
+
+\subsection{Libreoffice in inglese}
+
+Installare dal gestore software (applicazioni), il pacchetto
+texttt{libreoffice-langpack-it}
+
+\subsection{I filmati di Youtube scattano}
+
+Purtroppo la tua combinazione di CPU e scheda grafica non sono abbastanza
+potenti per gestire filmati in flash di Youtube. Prova la versione
+HTML 5 di Youtube, attivabile all'indirizzo
+\texttt{www.youtube.com/html5}
+
+\subsection{Perché sono presenti più voci di Fedora nel menù di scelta del sistema operativo?}
+Quando si accende il computer, vi possono essere più voci di Fedora menù di scelta del sistema operativo.
+Ciò accade in quanto ad ogni aggiornamento del kernel del sistema operativo, le tre versioni
+precedenti vengono mantenute per precauzione in caso di problemi con una versione più recente.
+La voce più in alto è sempre la più recente, come si può notare dal numero progressivo che la caratterizza.
+
+\part{Nozioni estese}
+\chapter{Nozioni estese di Linux}
+\section{Linux e le distribuzioni}
+Linux spesso e volentieri viene definito come un sistema operativo. In realtà è un \texttt{kernel}. Il kernel è
+il nucleo del sistema operativo: gestisce l'hardware del computer, ed esegue molte altre operazioni
+che non sono oggetto della presente guida.
+Dato che un utente non può utilizzare il computer solo con un kernel, (un po' come guidare un'automobile 
+avendo a disposizione solo il motore), intorno ad esso sono state sviluppate applicazioni di vario 
+genere come interfacce grafiche, browser internet, programmi per l'ufficio, utility, eccetera. 
+Queste applicazioni insieme al kernel, formano una cosiddetta \texttt{distribuzione Linux}.
+Nel mondo sono presenti decine di varie distribuzioni, Fedora è una di esse.
+\section{Interfaccia grafica ed Interfaccia testuale}
+Normalmente si è abituati ad utilizzare il computer attraverso programmi dotati di 
+interfaccia grafica con il quale si può interagire cliccando con il mouse. Essi sono chiamati
+programmi con \texttt{interfaccia grafica}.
+In un sistema operativo basato su kernel Linux, oltre a programmi del genere sopracitato,
+sono presenti programmi con \texttt{interfaccia a riga di comando}. Per rendere l'idea, sono programmi 
+come nell'immagine
+AGGIUNGERE FIGURA
+
+Per interagire con un programma con interfaccia a riga di comando, occorre scrivere ``da qualche parte'' 
+dei comandi sulla tastiera. Questo ``da qualche parte'' è la \texttt{shell} di sistema (spesso chiamata 
+anche \texttt{terminale} o \texttt{console dei comandi}).
+
+\section{La gestione degli utenti e dei permessi dei file}
+I sistemi operativi basati su kernel Linux possono essere utilizzati da più utenti contemporaneamente.
+Tra questi utenti ve ne è uno che ha privilegi di amministratore, il suo nome è \texttt{root}.
+Egli è l'unico che può installare i programmi sul sistema e modificare i permessi dei file di tutti gli utenti.
+\subsection{Permessi dei file}
+Ogni file presente sul sistema ha un proprietario. Durante un utilizzo normale del sistema neanche ci si accorge
+di questa funzionalità, ma è bene descriverla comunque. CONTINUARE PARAGRAFO
+\subsection{Dischi rigidi: partizioni e filesystem}
+\label{Dischi rigidi}
+I dati presenti su un disco rigido possono essere divisi in una o più partizioni,
+chiamati anche \texttt{volume}. I dati contenuti in ogni partizione sono indicizzati e memorizzati
+con un meccanismo chiamato \texttt{filesystem}. Fedora opera con un filesystem libero, chiamato
+\texttt{extended filesystem (ext)}. Esso permette di coniugare un'altissima efficienza con 
+un'altrettanta elevata affidabilità. Non inferiore è la sua flessibilità: paragonato con il
+filesystem \texttt{FAT} delle ``penne USB'', permette ad esempio, la creazione di nomi di file con caratteri
+accentati e la memorizzazione di file più grandi di 2 GB.
+
+\section{Programmi consigliati}
+Di seguito, una lista di programmi che sono installabili liberamente sul proprio sistema
+
+\subsection{Editing multimediale}
+\paragraph{Audio}
+\begin{itemize}
+ \item Ardour
+ \item Audacity
+ \item Guitarix (simulatore amplificatore chitarra elettrica)
+ \item Hydrogen (Drum machine / Sequencer)
+ \item Qtractor (sequencer Audio/MIDI multi traccia)
+ \item Rosegarden
+ \item Rakarrack (simulatore amplificatore chitarra elettrica)
+ \item Yoshimi (sintetizzatore audio)
+ 
+\end{itemize}
+\paragraph{Video}
+\begin{itemize}
+ \item guvcview (registratore HD da dispositivi webcam)
+ \item Kdenlive
+ \item Natron editor professionale per il cinema (disponibile sul sito \newline \texttt{http://natron.inria.fr/})
+\end{itemize}
+
+
+\subsection{Grafica}
+\paragraph{3D}
+\begin{itemize}
+ \item Blender
+\end{itemize}
+\paragraph{CAD}
+\begin{itemize}
+ \item DraftSight (disponibile sul sito \newline \texttt{http://www.3ds.com/it/prodotti-e-servizi/draftsight/})
+ \item FreeCAD
+ \item LibreCAD
+\end{itemize}
+\paragraph{Diagrammi}
+\begin{itemize}
+ \item Dia
+ \item yEd  (disponibile sul sito \newline \texttt{http://www.yworks.com/en/products/yfiles/yed/})
+ \item Libreoffice Draw
+\end{itemize}
+\paragraph{Fotoritocco}
+\begin{itemize}
+ \item GIMP (fotoritocco generico)
+ \item Darktable (sviluppo RAW e ritocco di fotografie)
+\end{itemize}
+\paragraph{Grafica vettoriale e publishing}
+\begin{itemize}
+ \item Inkscape
+ \item Scribus
+\end{itemize}
+\paragraph{Pittura digitale}
+\begin{itemize}
+ \item Krita
+\end{itemize}
+
+
+\subsection{Ufficio}
+\paragraph{Contabilità}
+\begin{itemize}
+ \item GNUCash
+ \item Homebank
+ \item Skrooge
+\end{itemize}
+\paragraph{Mappe concettuali}
+\begin{itemize}
+ \item Freemind
+\end{itemize}
+\paragraph{Produttività}
+\begin{itemize}
+ \item Libreoffice
+ \item Koffice
+\end{itemize}
+\paragraph{Sanità}
+\begin{itemize}
+ \item GNUHealth (gestionale per ospedali ed ambulatori)
+ \item XMedCon (visore per ecografie, radiografie, TAC, ecc.)
+\end{itemize}
+
+
+
+\end{document}
