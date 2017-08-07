@@ -261,7 +261,10 @@ e per il momento non sono di nostro interesse
 
 La prima domanda che sorge potrebbe essere: ``dove vanno a finire i dischi esterni, le periferiche USB, i DVD?''
 La risposta è: dopo il loro collegamento, vanno a finire (in gergo: ``vengono montati'') dentro la cartella \texttt{media}.
-
+La cartella in alto con il simbolo / è la cartella root (radice). Essa è la
+cartella che contiene tutte le altre sottocartelle nei sistemi operativi
+Linux e UNIX. Viene chiamata radice in quanto si trova in cima all'albero rovesciato
+che rappresenta la 
 \cleardoublepage
 
 \section{Interfaccia grafica KDE Plasma}
@@ -461,13 +464,75 @@ Per interagire con un programma con interfaccia a riga di comando, occorre scriv
 dei comandi sulla tastiera. Questo ``da qualche parte'' è la \texttt{shell} di sistema (spesso chiamata 
 anche \texttt{terminale} o \texttt{console dei comandi}).
 
-\section{La gestione degli utenti e dei permessi dei file}
+\subsection{Console dei comandi}
+Man 
+
+per uscire premere il tasto \texttt{q}
+Quando si utilizza la console dei comandi, per eseguire un programma generalmente
+basta scrivere il suo nome e premere invio. Qualora si abbia la necessità di
+inserire ulteriori opzioni, 
+La lista di tali opzioni è disponibile nel manuale del programma
+\section{Servizi}
+I servizi o demoni, sono dei programmi che girano in sottofondo (background) CONTINUARE PARAGRAFO
+
+\chapter{Filesystem e gestione dei file}
 I sistemi operativi basati su kernel Linux possono essere utilizzati da più utenti contemporaneamente.
 Tra questi utenti ve ne è uno che ha privilegi di amministratore, il suo nome è \texttt{root}.
 Egli è l'unico che può installare i programmi sul sistema e modificare i permessi dei file di tutti gli utenti.
-\subsection{Permessi dei file}
+\section{Permessi dei file}
 Ogni file presente sul sistema ha un proprietario. Durante un utilizzo normale del sistema neanche ci si accorge
-di questa funzionalità, ma è bene descriverla comunque. CONTINUARE PARAGRAFO
+di questa funzionalità, ma è bene descriverla comunque.
+Ogni file ha dei permessi che possono essere: lettura, scrittura, esecuzione:
+\begin{itemize}
+ \item lettura (r, da read in lingua inglese): la possibilità di leggere un file;
+ \item scrittura (w, da write in lingua inglese): la possibilità di scrivere un file;
+ \item esecuzione (x, da execute in lingua inglese): la possibilità di eseguire il file eseguibile di un programma;
+\end{itemize}
+questi tre diversi permessi formano la terna rwx e possono essere collegati ad utente, gruppo ed altri utenti:
+\begin{itemize}
+ \item utente: è l'utente proprietario del file;
+ \item gruppo: è possibile definire un gruppo di utenti che abbia dei
+ particolariun permessi sul file;
+ \item altri: sono tutti gli altri utenti che non rientrano nelle due
+ precedenti categorie.
+\end{itemize}
+
+
+Quando si visualizza un elenco dei file
+con il comando \texttt{ls -l} si ottiene una lista del tipo
+
+-rwxrwxrwx 2 root root     0 Jan  1  1970 fattura.pdf
+-rwxrwxrwx 2 root root     0 Jan  1  1970 ricevuta.pdf
+
+dove -rwxrwxrwx ha il seguente significato
+\begin{center}
+\includegraphics[width=0.8\textwidth]{Immagini/permessi_file.pdf}  
+\end{center}
+
+\section{Tipi di file,``Everything is a file''}
+Nei sistemi operativi Linux e UNIX, file, stampanti, hard disk, schede video,
+vengono viste come dei file.
+Esistono vari tipi di file, ognuno identificato da un carattere speciale
+nella casella ``tipo file'' mostrata nella precedente figura.
+\subsection{Regular file}
+I regular file (file regolari) sono i file come siamo abituati a conoscerli:
+jpg, pdf, xml, eccetera. Il simbolo ``tipo file'' è \texttt{-}.
+\subsection{Device file}
+I dischi fissi, le stampanti e altre periferiche sono viste dal sistema come
+un file di tipo device file (file dispositivo). Essi sono generalmente
+presenti nella cartella \texttt{/dev} del file system.
+\paragraph{Character device}
+Sono dei device file (file dispositivo) che possono venir letti dal sistema in maniera
+seriale. Un flusso di dati seriale può essere immaginato come una conversazione
+a voce con un'altra persona, dove non si può saltare avanti, ma si può ascoltare
+una parola per volta in maniera sequenziale. Il simbolo ``tipo file'' è \texttt{c}.
+\paragraph{Block device}
+Sono dei device file (file dispositivo) che possono venir letti dal sistema in maniera
+casuale. Un'analogia può essere una pagina di un libro, dove si può leggere liberamente
+in vari punti, saltando da una riga ad un'altra. Il simbolo ``tipo file'' è \texttt{b}.
+\subsection{directory}
+Le directory (cartelle) vengono viste dal sistema come dei speciali tipi di file.
+Il simbolo ``tipo file'' è \texttt{d}.
 \subsection{Dischi rigidi: partizioni e filesystem}
 \label{Dischi rigidi}
 I dati presenti su un disco rigido possono essere divisi in una o più partizioni,
@@ -478,9 +543,17 @@ un'altrettanta elevata affidabilità. Non inferiore è la sua flessibilità: parago
 filesystem \texttt{FAT} delle ``penne USB'', permette ad esempio, la creazione di nomi di file con caratteri
 accentati e la memorizzazione di file più grandi di 2 GB.
 
-\section{Servizi}
-I servizi o demoni, sono dei programmi che girano in sottofondo (background) CONTINUARE PARAGRAFO
-\section{Programmi consigliati}
+\section{Radice del file system}
+Nella cartella /bin ci sono tutti i file eseguibili dei programmi installati
+Nella cartella /dev ci sono tutte le periferiche del sistema
+Nella cartella /etc sono memorizzati i file di configurazione con le opzioni di configurazione dei programmi installati
+Nella cartella /usr (sola lettura) ci sono impostazioni del sistema create dal vendor
+Nella cartella /var vi sono i file dove il sistema scrive i dati nel
+corso delle sue operazioni
+Per installare i programmi su Fedora sua
+
+
+\chapter{Programmi consigliati}
 Di seguito, una lista di programmi che sono installabili liberamente sul proprio sistema
 
 \subsection{Editing multimediale}
@@ -552,7 +625,7 @@ Di seguito, una lista di programmi che sono installabili liberamente sul proprio
 \paragraph{Produttività}
 \begin{itemize}
  \item Libreoffice
- \item Koffice
+ \item Calligra
 \end{itemize}
 \paragraph{Sanità}
 \begin{itemize}
